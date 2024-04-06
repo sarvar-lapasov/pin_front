@@ -1,7 +1,4 @@
 <template>
-    <router-link class="absolute mx-5 my-1" style="position: absolute; top: 0; left: 0;" :to="'/'">
-        Run
-    </router-link>
     <div class="container mx-5 right-panel-active" id="container">
         <div class="form-container sign-up-container">
             <form @submit.prevent="auth">
