@@ -193,7 +193,8 @@
                             <select class="form-select" aria-label="Default select example"
                                     id="exampleFormControlInput3"
                                     v-model="product.status">
-                                <option selected value="available">Доступен</option>
+                                <option selected disabled value="">Доступен</option>
+                                <option value="available">Доступен</option>
                                 <option value="unavailable">Не доступен</option>
 
                             </select>

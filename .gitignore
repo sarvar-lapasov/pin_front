@@ -29,4 +29,6 @@ coverage
 
 *.tsbuildinfo
 
+public/bootstrap/
 public/bootstrap
+public/bootstrap/*
