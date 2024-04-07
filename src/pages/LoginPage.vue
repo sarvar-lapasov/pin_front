@@ -37,7 +37,7 @@
                     v-model="form.password_confirmation"
                     :class="{'error': isLoginerror}"
                     class="form-control"
-                    placeholder="Password"
+                    placeholder="Confirm password"
                     type="password"
                     autocomplete
                     @input="errorHide"

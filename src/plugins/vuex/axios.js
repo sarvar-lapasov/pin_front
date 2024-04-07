@@ -1,5 +1,6 @@
 import axios from "axios";
 import store from "@/plugins/vuex/store";
+import router from "../router";
 
 axios.defaults.baseURL =
     import.meta.env.VITE_APP_API_URL + "/api";
@@ -21,9 +22,14 @@ axios.interceptors.response.use(
             store.dispatch('refreshToken')
                 .then(() => {
                     window.location.reload();
+                }).catch((error) => {
+                    console.log(error);
+                    router.push('/login')
+                        .then(() => {
+                            window.location.reload();
+                        })
                 })
         }
-
         return Promise.reject(error);
     })
 

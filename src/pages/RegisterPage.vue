@@ -37,7 +37,7 @@
                 <input
                     class="form-control"
                     type="password"
-                    placeholder="Password"
+                    placeholder="Confirm password"
                     autocomplete
                     v-model="form.password_confirmation"
                 />
