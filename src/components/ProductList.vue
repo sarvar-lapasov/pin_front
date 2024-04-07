@@ -308,6 +308,9 @@ export default {
                     this.fetchProducts({})
                 })
         },
+        showModal(){
+            this.resetForm();
+        },
         closeModal() {
              this.resetForm();
              this.fetchProducts({});
