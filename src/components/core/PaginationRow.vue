@@ -1,16 +1,23 @@
 <template>
     <paginate
-        class="pagination justify-content-center fs-1 fs-sm-5"
+        class="flex justify-center mt-5"
         v-if="All > 6"
         v-model="page"
         :page-count="Math.ceil(All / 6)"
         :page-range="3"
         :margin-pages="2"
         :click-handler="clickCallback"
-        :prev-text="'Prev'"
-        :next-text="'Next'"
-        :container-class="'pagination'"
-        :page-class="'page-item'"
+        :prev-text="'<<'"
+        :disabled-class="'bg-gray-200  hover:bg-gray-200'"
+        :prev-class="'rounded-full w-12 h-12 flex justify-center text-xl items-center ease-in-out duration-300 border-2 border-dark-500 hover:bg-gray-100'"
+        :next-class="'rounded-full w-12 h-12 flex justify-center text-xl items-center ease-in-out duration-300 border-2 border-dark-500 hover:bg-gray-100'"
+        :next-text="'>>'"
+        :prev-link-class="'w-full h-full flex justify-center items-center'"
+        :next-link-class="'w-full h-full flex justify-center items-center'"
+        :container-class="'flex gap-2 items-center cursor-pointer'"
+        :page-link-class="'w-full h-full flex justify-center items-center'"
+        :page-class="'rounded-full w-12 h-12 flex justify-center text-xl  items-center ease-in-out duration-300 border-2 border-dark-500 hover:bg-gray-100'"
+        :active-class="'bg-[#0FC5FF] text-white hover:bg-[#0FC5FF]'"
     >
     </paginate>
 </template>
@@ -28,10 +35,6 @@ export default {
     },
     props: {
         All: {
-            type: Number,
-            required: true,
-        },
-        LastPage: {
             type: Number,
             required: true,
         },

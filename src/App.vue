@@ -3,11 +3,11 @@
             $route.path !== '/login' &&
             $route.path !== '/register' 
         "
-   class="d-flex">
+   class="grid grid-cols-9">
       <SideBar/>
-      <router-view/>
+      <router-view class="col-span-8"/>
   </div>
-  <div class="d-flex justify-content-center align-items-center" v-else style="height: 100vh">
+  <div class="flex justify-center items-center" v-else style="height: 100vh">
         <router-view />
     </div>
 </template>

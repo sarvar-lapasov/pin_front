@@ -1,31 +1,19 @@
 <template>
    <div class="px-3">
     <nav
-        class="navbar sticky-top navbar-expand-lg py-0 bg-white"
-        data-bs-theme="dark"
+        class="flex"
+        style="height: 80px;"
     >
-        <button
-            aria-controls="navbarScroll"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            class="navbar-toggler bg-success ms-auto"
-            data-bs-target="#navbarScroll"
-            data-bs-toggle="collapse"
-            type="button"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div
-            id="navbarScroll"
-            class="collapse navbar-collapse w-100 justify-content-between"
+            class="w-full flex"
         >
             <ul
-                class="navbar-nav text-secondary my-lg-0 my-md-3 py-0"
+                class="flex "
             >
-                <li class="nav-item">
+                <li class="flex items-center px-3">
                     <router-link
                         :active-class="'active'"
-                        class="nav-item nav-link fw-medium text-danger py-4 px-0 border-bottom border-danger"
+                        class="text-red-500 h-full py-7 border-b-4 border-red-500"
                         to="/"
                     >ПРОДУКТЫ
                     </router-link
@@ -34,32 +22,31 @@
             </ul>
         </div>
         <div
-            id="navbarScroll"
-            class="collapse navbar-collapse text-center justify-content-end"
+            class="flex justify-center items-center"
         >
             <ul
-                class="navbar-nav user d-flex justify-content-end justify-md-content-center align-items-center"
+                class="user h-full py-6 px-2"
             >
                 <li
                     v-if="getUser"
-                    style="height: 40px;"
-                    class="nav-item user__item position-relative mt-5 mt-lg-0 py-2"
-                ><p class="m-0 px-3 " >{{ getUser.name }}</p>
+                   
+                    class=" user__item m-0 h-full"
+                ><p  class="m-0" >{{ getUser.name }}</p>
                 <ul class="user__navbar">
-                        <li class="nav-item">
+                        <li class="w-full flex border-b-2 border-gray-500 pb-2">
                             <h3
-                                class="text-warning pb-2 capitalize border-bottom m-0"
+                                class="text-yellow-400 mx-auto text-2xl font-medium"
                             >
                                 {{ getUser.name }}
                             </h3>
                         </li>
-                        <li class="nav-item mt-4">
+                        <li class="mt-6">
                             <button
-                                class="btn nav-link text-start text-black w-100"
+                                class="flex items-center text-start"
                                 @click="click()"
                             >
                                 <svg
-                                    class="me-2"
+                                    class="mr-2"
                                     fill="none"
                                     style="width: 21px; height: 21px"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -69,18 +56,20 @@
                                         fill="#FFC600"
                                     />
                                 </svg>
-                                Log out
+                                <span class="pb-0.5">
+                                    Log out
+                                </span>
                             </button>
                         </li>
                     </ul>
                 </li>
-                <li v-else class="nav-item mt-3 mt-lg-0 d-flex align-items-center">
+                <li v-else class="w-full flex justify-end items-center">
                     <router-link
-                        class="nav-link text-black sign-in"
+                        class=" text-black sign-in"
                         to="/login"
                     >
                         <svg
-                            class="me-2"
+                            class="mr-2"
                             style="width: 21px; height: 21px"
                             viewBox="0 0 1692.02 1727.6"
                             xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +142,7 @@ export default {
     transition: all 0.3s ease-in;
     display: none;
     position: absolute;
-    top: 40px;
+    top: 30px;
     right: 0;
     cursor: default;
     background-color: white;
@@ -186,9 +175,8 @@ export default {
     }
 
     .user__item {
-        right: -50%;
-        justify-content: center;
-        transform: translateX(-50%);
+        
+        justify-content: end;
         margin-bottom: 20px;
     }
 

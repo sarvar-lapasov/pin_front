@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar">
-        <div class="d-flex">
-            <div class="bg-white me-3 box-r">
+        <div class="flex">
+            <div class="bg-white mr-3 box-r">
                 <img class="logo" src="../../public/assets/logo.png" alt="">
             </div>
             <h2 class="erp">Enterprise Resource Planning</h2>

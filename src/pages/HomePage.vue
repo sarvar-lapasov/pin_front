@@ -21,6 +21,6 @@ export default {
 <style>
 .home {
     width: 100%;
-    background-color:#f2f2f6;
+    background-color:#F2F6FA;
 }
 </style>
