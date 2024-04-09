@@ -1,6 +1,22 @@
 <template>
-    <div class="flex justify-between py-3">
-        <div class="flex flex-col">
+    <div class=" py-5">
+       <div v-if="getUser ? getUser.roles.find(
+                                      (e) =>
+                                          e.name === 'admin'
+                                  )
+                                : false" class="px-5 mb-5 flex">
+        <select v-model="filters.status" @change="applyFilter" class="rounded-md border-0  py-2 px-3  text-gray-500">
+            <option value="">Все</option>
+            <option value="available">Доступен</option>
+            <option value="unavailable">Недоступен</option>
+        </select>
+        <label for="isActive" class="ml-4 flex items-center">
+            <input v-model="filters.onlyTrashed" type="checkbox" @change="applyFilter" id="isActive"/>
+            <span class="ml-2">Корзина</span>
+        </label>
+       </div>
+        <div class="flex justify-between">
+            <div class="flex flex-col">
             <table class="table">
             <thead>
             <tr>
@@ -38,7 +54,9 @@
                 Добавить
             </button>
         </div>
+        </div>
     </div>
+
     <transition name="fade">
       <div v-if="isModalVisible(0)" > 
         <div
@@ -70,7 +88,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput3" class="block text-sm mb-2">Статус</label>
-                            <select class="w-full rounded-md border-0  py-2 px-2.5  text-gray-500 " 
+                            <select class="w-full rounded-md border-0  py-2 px-2.5  text-gray-500" 
                                     id="exampleFormControlInput3"
                                     v-model="product.status">
                                 <option disabled value="" hidden>Доступен</option>
@@ -114,7 +132,6 @@
             </div>
       </div>
     </transition>
-
       <transition name="fade">
       <div v-if="isModalVisible(1)"> 
         <div
@@ -258,10 +275,6 @@
       </div>
     </transition>
 
-   
-
-
- 
 </template>
 
 <script>
@@ -282,6 +295,10 @@ export default {
     data() {
         return {
             modals: [false, false, false],
+           filters:{
+            status: '',
+            onlyTrashed: 0,
+           },
             dayjs,
             productInfo:'',
             product: {
@@ -297,17 +314,15 @@ export default {
         isModalVisible() {
             return index => this.modals[index];
         },
-        ...mapGetters(["getProducts",'getAccessToken','getProductTotal']),
+        ...mapGetters(["getProducts",'getAccessToken','getProductTotal','getUser']),
     },
     methods: {
         ...mapActions(['fetchProducts','pushProduct',"aboutMe",'fetchProduct','editProduct','deleteProduct']),
         pageClick(pageNum) {
-            this.fetchProducts({
-                page: pageNum,
-            })
+           const data ={...this.filters, page: pageNum} 
+            this.fetchProducts(data)
                 .then(() => {
                 })
-               
         },
         onToggle(index) {
             if(index == 0) {
@@ -324,7 +339,7 @@ export default {
             this.pushProduct(this.product)
             .then((response) => {
                 console.log(response);
-                this.fetchProducts({});
+                this.fetchProducts(this.filters);
                 this.resetForm();
             });
         },
@@ -333,7 +348,7 @@ export default {
             this.editProduct({id:this.productInfo.id, data:this.productInfo})
             .then((response) => {
                 console.log(response);
-                this.fetchProducts({});
+                this.fetchProducts(this.filters);
                 this.onToggle(index)
             });
         },
@@ -349,9 +364,12 @@ export default {
         deleteProductById(id, index){
                 this.deleteProduct(id)
                 .then(()=>{
-                    this.fetchProducts({})
+                    this.fetchProducts(this.filters)
                     this.onToggle(index)
                 })
+        },
+        applyFilter() {
+            this.fetchProducts(this.filters);
         },
         resetForm() {
             this.attributes=[];
@@ -378,8 +396,11 @@ export default {
             }
         }
     },
+    watch:{
+        
+    },
     mounted() {
-        this.fetchProducts({});
+        this.fetchProducts(this.filters);
     },
 };
 </script>

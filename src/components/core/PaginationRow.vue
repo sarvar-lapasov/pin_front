@@ -17,7 +17,7 @@
         :container-class="'flex gap-2 items-center cursor-pointer'"
         :page-link-class="'w-full h-full flex justify-center items-center'"
         :page-class="'rounded-full w-12 h-12 flex justify-center text-xl  items-center ease-in-out duration-300 border-2 border-dark-500 hover:bg-gray-100'"
-        :active-class="'bg-[#0FC5FF] text-white hover:bg-[#0FC5FF]'"
+        :active-class="'bg-[#0FC5FF] text-white hover:bg-[#0FC5FF] hover:text-black'"
     >
     </paginate>
 </template>
