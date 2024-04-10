@@ -15,8 +15,9 @@
         </label>
        </div>
         <div class="flex justify-between">
-            <div class="flex flex-col">
-            <table class="table">
+            <div class="flex flex-col table_width">
+                <div v-if="getProducts.length < 1" class="w-full border-2 ml-4 text-center border-gray-500 rounded-lg p-10">Здесь пока нет товара...</div>
+            <table v-else >
             <thead>
             <tr class="grid grid-cols-4">
                 <th>АРТИКУЛ</th>
@@ -447,7 +448,7 @@ export default {
 body{
     position: relative;
 }
-.table {
+.table_width {
     width: 800px;
 }
 
