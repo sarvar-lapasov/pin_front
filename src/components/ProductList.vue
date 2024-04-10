@@ -58,13 +58,13 @@
     </div>
 
     <transition name="fade">
-      <div v-if="isModalVisible(0)" > 
+      <div v-if="isModalVisible(0)" class=""> 
         <div
           @click="onToggle(0)"
           class="absolute bg-black opacity-50 inset-0 z-10"
         ></div>
         <div
-          class="w-full text-white max-w-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-5  rounded-xl  z-20  bg-[#374050] " 
+          class="w-full text-white max-w-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-5  rounded-xl  z-20  bg-[#374050]" 
         >    
                 <div class="flex justify-between mb-6">
                     <h5 class="text-2xl">Добавить продукт</h5>
@@ -100,18 +100,18 @@
                         <div class="mb-3 ">
                             <h4 class="py-3 pb-6 text-xl">Атрибуты</h4>
                            <div class="max-h-40 overflow-y-auto scrollbar scrollbar-thumb-gray-900 scrollbar-track-border-1 scrollbar-track-gray-100">
-                            <div v-for="(value, key) in attributes" :key="key" class="flex mb-3 justify-between  items-end">
-                                <div class="flex flex-col w-full">
+                            <div v-for="(value, key) in attributes" :key="key" class="flex flex-wrap md:flex-nowrap mb-3 pr-3 justify-between  items-end">
+                                <div class="flex-col w-full md:w-1/2">
                                     <label for="exampleFormControlInput2" class="block text-sm mb-2">Название</label>
-                                    <input type="text" class=" rounded-md py-2 px-2.5 border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:none" :id="'exampleFormControlInput' + key" required
+                                    <input type="text" class="w-full rounded-md py-2 px-2.5 border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:none" :id="'exampleFormControlInput' + key" required
                                            v-model="attributes[key].attribute_name">
                                 </div>
-                                <div class="flex flex-col mx-2 w-full">
+                                <div class="flex-col w-4/5 mx-0 mt-3 md:w-1/2 md:ml-3">
                                     <label for="exampleFormControlInput2" class="block text-sm mb-2">Значение</label>
-                                    <input type="text" class=" rounded-md py-2 px-2.5 border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:none" :id="'exampleFormControlInput2' + key" required
+                                    <input type="text" class="w-full rounded-md py-2 px-2.5 border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:none" :id="'exampleFormControlInput2' + key" required
                                            v-model="attributes[key].value">
                                 </div>
-                                <button type="button" class="button mx-2 grid content-center h-10 border-0 bg-transparent"
+                                <button type="button" class="button w-1/5 flex items-center justify-center md:w-auto md:mx-3 md:ml-4 content-center h-10 border-0 bg-transparent"
                                     @click="deleteAttribute(key)">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-[#c4c4c4]">
                                          <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
@@ -189,19 +189,19 @@
                 </div>
                 <div class="mt-6">
                     <div class="col-6 mt-5">
-                    <div class="grid grid-cols-5 mt-5">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
                         <span class=" text-gray-400 text-lg">Артикул: </span>
                         <p class="text-md">{{productInfo.article}}</p>
                     </div>
-                    <div class="grid grid-cols-5 mt-5">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
                         <span class=" text-gray-400 text-lg">Название: </span>
                         <p class="text-md">{{productInfo.name}}</p>
                     </div>
-                    <div class="grid grid-cols-5 mt-5">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
                         <span class=" text-gray-400 text-lg">Статус: </span>
                         <p class="text-md">{{productInfo.status =='available' ? 'Доступен':'Не доступен' }}</p>
                     </div>
-                    <div class="grid grid-cols-5 mt-5">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
                         <span class=" text-gray-400 text-lg">Атрибуты: </span>
                         <ul class="nav flex flex-col">
                             <li class="" v-if="productInfo.data">
@@ -232,7 +232,7 @@
           class="absolute bg-black opacity-50 inset-0 z-10"
         ></div>
         <div
-          class="w-full text-white max-w-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-5  rounded-xl  z-20  bg-[#374050]" 
+          class="w-full  text-white max-w-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-5  rounded-xl  z-20  bg-[#374050]" 
         >    
                 <div class="flex justify-between mb-6">
                     <h5 class="text-2xl">Редактировать {{productInfo.name}}</h5>
@@ -266,19 +266,19 @@
                         </div>
                         <div class="mb-3">
                             <h4 class="py-3 pb-6 text-xl">Атрибуты</h4>
-                            <div class="max-h-40 overflow-y-auto scrollbar scrollbar-thumb-gray-900 scrollbar-track-border-1 scrollbar-track-gray-100">
-                            <div v-for="(value, key) in attributes" :key="key" class="flex mb-3 justify-between items-end">
-                                <div class="flex flex-col w-full">
+                            <div class="max-h-40  overflow-y-auto scrollbar scrollbar-thumb-gray-900 scrollbar-track-border-1 scrollbar-track-gray-100">
+                            <div v-for="(value, key) in attributes" :key="key" class="flex flex-wrap md:flex-nowrap pr-3 mb-3 justify-between items-end">
+                                <div class="flex-col w-full md:w-1/2">
                                     <label for="exampleFormControlInput2" class="block text-sm mb-2">Название</label>
-                                    <input type="text" class="rounded-md py-2 px-2.5 border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:nonel" :id="'exampleFormControlInput' + key" required
+                                    <input type="text" class="rounded-md w-full py-2 px-2.5 border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:nonel" :id="'exampleFormControlInput' + key" required
                                            v-model="attributes[key].attribute_name">
                                 </div>
-                                <div class="flex flex-col w-full mx-2 ms-4">
+                                <div class="flex-col w-4/5 mx-0 mt-3 md:w-1/2 md:ml-3">
                                     <label for="exampleFormControlInput2" class="block text-sm mb-2">Значение</label>
-                                    <input type="text" class="rounded-md py-2 px-2.5 border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:nonel" :id="'exampleFormControlInput2' + key" required
+                                    <input type="text" class="rounded-md py-2 w-full px-2.5 border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:nonel" :id="'exampleFormControlInput2' + key" required
                                            v-model="attributes[key].value">
                                 </div>
-                                <button type="button" class="button mx-2 grid content-center h-10 border-0 bg-transparent"
+                                <button type="button" class="button w-1/5 flex items-center justify-center md:w-auto md:mx-3 md:ml-4 content-center h-10 border-0 bg-transparent"
                                     @click="deleteAttribute(key)">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-[#c4c4c4]">
                                          <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />

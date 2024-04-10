@@ -119,7 +119,7 @@ export default {
 
 <style scoped>
 .user {
-    min-width: 180px;
+    min-width: 120px;
     margin: 0 auto;
 }
 
