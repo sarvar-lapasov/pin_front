@@ -6,6 +6,7 @@ import store from "@/plugins/vuex/store";
 import Paginate from "vuejs-paginate-next";
 
 
+
 createApp(App)
     .use(router)
     .use(store)

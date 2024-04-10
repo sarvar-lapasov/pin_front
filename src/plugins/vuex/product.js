@@ -16,11 +16,12 @@ export default {
             return deleteRequest('/products', productId)
         },
         pushProduct(context, data) {
-            console.log(data);
             return postRequest('/products', data);
         },
+        restoreProduct(context, data) {
+            return postRequest('/products/' + data);
+        },
         editProduct(context, { id, data }) {
-            console.log(id, data);
             return putRequest('/products/' + id, data)
         },
     },
