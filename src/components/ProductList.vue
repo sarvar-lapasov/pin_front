@@ -14,8 +14,8 @@
             <span class="ml-2">Корзина</span>
         </label>
        </div>
-        <div class="flex justify-between">
-            <div class="flex flex-col table_width">
+        <div class="flex flex-col-reverse items-end md:flex-row md:items-start justify-between">
+            <div class="flex flex-col w-full md:w-3/4 lg:w-2/3">
                 <div v-if="getProducts.length < 1" class="w-full border-2 ml-4 text-center border-gray-500 rounded-lg p-10">Здесь пока нет товара...</div>
             <table v-else >
             <thead>
@@ -306,12 +306,6 @@
 import {mapActions, mapGetters} from "vuex";
 import PaginationRow from "./core/PaginationRow.vue";
 
-import dayjs from "dayjs";
-import timezone from "dayjs/plugin/timezone"
-import utc from "dayjs/plugin/utc"
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
 export default {
     name: "ProductList",
     components: {
@@ -324,7 +318,6 @@ export default {
             status: '',
             onlyTrashed: 0,
            },
-            dayjs,
             productInfo:'',
             product: {
                 article:'',

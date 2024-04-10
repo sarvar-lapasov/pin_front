@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar">
+    <div class="sidebar md:block hidden">
         <div class="flex">
             <div class="bg-white mr-3 box-r">
                 <img class="logo" src="../../public/assets/logo.png" alt="">
