@@ -169,26 +169,5 @@ export default {
     color: white;
 }
 
-@media (max-width: 992px) {
-    .user {
-        margin-top: 32px;
-    }
 
-    .user__item {
-        
-        justify-content: end;
-        margin-bottom: 20px;
-    }
-
-    .user__navbar {
-        right: 50%;
-        transform: translateX(50%);
-    }
-
-    .sign-in {
-        justify-content: center;
-        margin: auto;
-        margin-bottom: 20px;
-    }
-}
 </style>
